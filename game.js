@@ -145,6 +145,7 @@ let selectedCase = null;
 let foundClues = {};
 let totalScore = 0;
 let casesSolved = 0;
+let caseFinished = false; // new flag
 
 // ------------------- Initialize -------------------
 window.onload = initGame;
@@ -171,6 +172,7 @@ function startCase(index) {
   selectedCase = cases[index];
   currentCaseIndex = index;
   foundClues = {};
+  caseFinished = false; // reset
 
   document.getElementById("storyText").textContent = selectedCase.description;
 
@@ -201,6 +203,7 @@ function startCase(index) {
 
 // ------------------- Reveal Clues -------------------
 function revealClue(clue, btn) {
+  if (caseFinished) return; // block after case solved
   if (foundClues[clue.name]) return;
   foundClues[clue.name] = clue.detail;
   const foundCluesDiv = document.getElementById("foundClues");
@@ -212,6 +215,9 @@ function revealClue(clue, btn) {
 
 // ------------------- Accuse Suspect -------------------
 function accuseSuspect(suspect) {
+  if (caseFinished) return; // prevent multiple accusations
+  caseFinished = true;
+
   const resultDiv = document.getElementById("result");
   let points = 0;
   const difficultyPoints = { Easy: 10, Medium: 20, Hard: 30 };
@@ -240,6 +246,11 @@ function accuseSuspect(suspect) {
 
   document.getElementById("resultSection").classList.remove("hidden");
   document.getElementById("nextCaseBtn").classList.remove("hidden");
+
+  // Disable all buttons after case is solved
+  document.querySelectorAll("#clueButtons button, #suspectButtons button").forEach(btn => {
+    btn.disabled = true;
+  });
 
   // Update breakdown
   const scoreList = document.getElementById("scoreList");
