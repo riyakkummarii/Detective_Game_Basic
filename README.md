@@ -65,4 +65,9 @@ This is a text-based detective mystery game where players solve **10 unique case
 ## Future Enhancements
 - Add **Detective Rank** based on total points (Rookie / Detective / Master Detective)  
 - Add **timer per case** for speed-based scoring  
-- Add additional cases for extended gameplay  
+- Add additional cases for extended gameplay
+
+---
+
+## Play Online
+URL: https://riyakkummarii.github.io/Detective_Game_Basic/
