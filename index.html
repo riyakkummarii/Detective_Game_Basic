@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Detective Mystery Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>🕵️ Detective Mystery Game</h1>
+    <p id="storyText">Select a case to begin your investigation.</p>
+
+    <div id="caseSelector"></div>
+
+    <div id="cluesSection" class="hidden">
+      <h2>🔍 Clues</h2>
+      <div id="clueButtons"></div>
+      <div id="foundClues"></div>
+    </div>
+
+    <div id="suspectsSection" class="hidden">
+      <h2>👥 Suspects</h2>
+      <div id="suspectButtons"></div>
+    </div>
+
+    <div id="resultSection" class="hidden">
+      <h2>📜 Case Result</h2>
+      <p id="result"></p>
+      <button id="nextCaseBtn" class="hidden">➡️ Next Case</button>
+    </div>
+
+    <div id="scorePanel">
+      <h2>🏆 Scoreboard</h2>
+      <p id="totalScore">Total Score: 0</p>
+      <p id="casesSolved">Cases Solved: 0 / 10</p>
+      <div id="scoringRules">
+        <h3>📊 Scoring Rules</h3>
+        <ul>
+          <li>Correct accusation → Points based on difficulty: Easy = 10, Medium = 20, Hard = 30</li>
+          <li>Wrong accusation → 0 points</li>
+          <li>Clues help solve the case, but do not give points</li>
+          <li>Total score accumulates across all cases</li>
+        </ul>
+      </div>
+      <div id="scoreBreakdown">
+        <h3>📋 Score Breakdown</h3>
+        <ul id="scoreList"></ul>
+      </div>
+    </div>
+  </div> <!-- end of game-container -->
+
+  <!-- Footer with dynamic year -->
+  <footer style="text-align:center; margin-top:25px; padding:15px; color:#aaa; background:#1a1a3b; border-radius:10px;">
+    &copy; <span id="year"></span> Riya Kumari. All rights reserved.
+  </footer>
+
+  <script>
+    // Automatically update the year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <script src="game.js"></script>
+</body>
+</html>
